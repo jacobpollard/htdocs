@@ -7,9 +7,14 @@
   
   <head>
   
-  <link type="text/css" href="jquery-ui-1.8.16.custom.css" rel="Stylesheet">	
+  <link type="text/css" href="jquery-ui.min.css" rel="Stylesheet">	
+  <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="jquery-ui.min.js"></script>
+  
+  <!--<link type="text/css" href="jquery-ui-1.8.16.custom.css" rel="Stylesheet">	
   <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
-  <script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>
+  <script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>-->
+  
   
 	<?php
     	
@@ -73,43 +78,42 @@
 </head>
 	
 	
-	<body onload='on_load()'>
+<body>
     
-		<form id='form' action='index.php' method='post'>
-            <div class='slider' id='slider'></div>
-			<input type='submit' value='Submit Judgment'>
-			<br>
-            <br>
-            <br>
-            <br>
-		</form>			
-
-		<script type='text/javascript'>
+	<form id='form' action='index.php' method='post'>
+    	<div class='slider' id='slider'></div>
+		<input type='submit' value='Submit Judgment'>
+		<br>
+        <br>
+        <br>
+        <br>
+	</form>	
 		
-			var clip1 = new Audio();
-			var clip2 = new Audio();
-			var sliderVal = 0;
-			var responseTime = 0;
+	<script type='text/javascript'>		
+
+		var clip1 = new Audio();
+		var clip2 = new Audio();
+		var sliderVal = 0;
+		var responseTime = 0;
 			
-			clip1.src = "<?php echo $clip_path1; ?>";
-			clip2.src = "<?php echo $clip_path2; ?>";
-	
-	    	function on_load() {
+		clip1.src = "<?php echo $clip_path1; ?>";
+		clip2.src = "<?php echo $clip_path2; ?>";
+		
+		$( document ).ready(on_load());
+
+		function on_load() {
 				
-	        	function on_change(event, ui) {
+			function on_change(event, ui) {
 	                                                                                                  
-	            	//document.getElementById('response').setAttribute('value', ui.value)
+				//document.getElementById('response').setAttribute('value', ui.value)
 				}
 	    
-	        	$( '#slider' ).slider( {
+				$( '#slider' ).slider( {
 	        
-	         	   value: 0,
-	        	   change: on_change()
-				} )
+					value: sliderVal,
+					change: on_change()
+					} )
 			}
-	    
-		</script>
-		<!--<script type='text/javascript'>		
 	
 			/*clip1.addEventListener('loadedmetadata', function() {
 				clip.play(); 
@@ -118,7 +122,7 @@
 				});*/
 	
 
-		</script>-->
-	</body>
+	</script>
+</body>
 	
 </html>

@@ -85,7 +85,7 @@ are finished, click the <strong>Submit Judgment</strong> button to go on to the 
 used to listening to the events, using the sliding cursor, and modifying your judgments.</center>
         </p>
         <br>
-        <form action='test.php' method='post'>
+        <form action='screen2.php' method='post'>
             <input type='submit' value='Begin Practice Trials'>
         </form>
     
