@@ -11,10 +11,6 @@
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="jquery-ui.min.js"></script>
   
-  <!--<link type="text/css" href="jquery-ui-1.8.16.custom.css" rel="Stylesheet">	
-  <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
-  <script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>-->
-  
   
 	<?php
     	
@@ -95,24 +91,40 @@
 		var clip2 = new Audio();
 		var sliderVal = 0;
 		var responseTime = 0;
+		var value = 0;
 			
 		clip1.src = "<?php echo $clip_path1; ?>";
 		clip2.src = "<?php echo $clip_path2; ?>";
 		
+		//AJAX send value
+		function record_value(){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+            	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                	//document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+					}
+				}
+            xmlhttp.open("GET", "saveValue.php?value=" + value, true);
+			xmlhttp.send();
+			}
+		
 		$( document ).ready(on_load());
 
 		function on_load() {
-				
+			
+			//Record the slider value every 200ms
+			setInterval( 'record_value()', 200 )
+			
+			//Do when slider is moved	
 			function on_change(event, ui) {
-	                                                                                                  
+	            
+	            value = ui.value;
+	            console.log(value);                                                                                      
 				//document.getElementById('response').setAttribute('value', ui.value)
 				}
-	    
-				$( '#slider' ).slider( {
-	        
-					value: sliderVal,
-					change: on_change()
-					} )
+			
+			//Initialize slider
+			$( '#slider' ).slider({value: sliderVal, change: on_change})
 			}
 	
 			/*clip1.addEventListener('loadedmetadata', function() {
