@@ -1,1 +1,0 @@
-SUBJECT: 30 FIELD: condition VALUE: 1

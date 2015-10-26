@@ -45,31 +45,34 @@
 		echo $clip_path2 . "<br>";
 		
 		$_SESSION["trial"] +=1;
-		   	
-    	/*$clip_length_file = fopen($clip_length_path, 'r');
-    	$clip_length = fgets($clip_length_file);
-    	fclose($clip_length_file);*/
     	
     ?>
     
-    
-    <style type='text/css'>
+   <style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
-		    position: absolute;
-		    top: 15%;
-		    left: 5%;
-		    width: 90%;
+		    margin: 5%;
 		    text-align: center;
-		    font-size: 30;
+		    font-size: 20;
 		    font-family: sans-serif;
+	    }
+	    div.slider {
+		    margin-left: 15%;
+		    margin-right: 15%;
 	    }
 	    input {
 		    font-size: 30;
 		}
+		p.left {
+		    position: absolute;
+		    left: 15%;
+		}
+		p.right {
+		    position: absolute;
+		    right: 15%;
+		}    
 	</style>
-	
-	
+		
  		<title> Florida State University Study </title>
 </head>
 	
@@ -78,6 +81,8 @@
     
 	<form id='form' action='index.php' method='post'>
     	<div class='slider' id='slider'></div>
+    	<p class='left'>No blame<br>at all</p>
+        <p class='right'>The most blame<br>you would<br>ever give</p>
 		<input type='submit' value='Submit Judgment'>
 		<br>
         <br>
@@ -96,9 +101,28 @@
 		clip1.src = "<?php echo $clip_path1; ?>";
 		clip2.src = "<?php echo $clip_path2; ?>";
 		
+		function clip1Play() {
+			clip1.play();
+			}
+			
+		function clip2Play() {
+			clip2.play();
+			}
+		
+		//Once clip1 is loaded, wait 300ms then play
+		clip1.addEventListener('loadedmetadata', function() {
+			setTimeout('clip1Play()', 300);
+			});
+		
+		//When clip1 has finished playing, wait 400ms then play clip2	
+		clip1.addEventListener('ended', function() {
+			setTimeout('clip2Play()', 400);
+		})
+		
 		//AJAX send value
 		function record_value(){
 			var xmlhttp = new XMLHttpRequest();
+			//Not sure if this call is needed
 			xmlhttp.onreadystatechange = function() {
             	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 	//document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
@@ -120,18 +144,11 @@
 	            
 	            value = ui.value;
 	            console.log(value);                                                                                      
-				//document.getElementById('response').setAttribute('value', ui.value)
 				}
 			
 			//Initialize slider
 			$( '#slider' ).slider({value: sliderVal, change: on_change})
 			}
-	
-			/*clip1.addEventListener('loadedmetadata', function() {
-				clip.play(); 
-				//alert("Duration::: "+clip.duration*1000+", <?php echo $clip_length ?>");
-				setTimeout("document.forms['form'].submit();", clip.duration*1000)
-				});*/
 	
 
 	</script>

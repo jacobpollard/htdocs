@@ -1,1 +1,0 @@
-SUBJECT: 23 FIELD: condition VALUE: 6

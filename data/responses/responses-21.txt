@@ -1,1 +1,0 @@
-SUBJECT: 21 FIELD: condition VALUE: 4
