@@ -79,7 +79,7 @@
 	
 <body>
     
-	<form id='form' action='index.php' method='post'>
+	<form id='form' action='screen3.php' method='post'>
     	<div class='slider' id='slider'></div>
     	<p class='left'>No blame<br>at all</p>
         <p class='right'>The most blame<br>you would<br>ever give</p>
@@ -97,6 +97,7 @@
 		var sliderVal = 0;
 		var responseTime = 0;
 		var value = 0;
+		var firstSlide = false;
 			
 		clip1.src = "<?php echo $clip_path1; ?>";
 		clip2.src = "<?php echo $clip_path2; ?>";
@@ -110,9 +111,9 @@
 			}
 		
 		//Once clip1 is loaded, wait 300ms then play
-		clip1.addEventListener('loadedmetadata', function() {
+		/*clip1.addEventListener('loadedmetadata', function() {
 			setTimeout('clip1Play()', 300);
-			});
+			});*/
 		
 		//When clip1 has finished playing, wait 400ms then play clip2	
 		clip1.addEventListener('ended', function() {
@@ -121,6 +122,8 @@
 		
 		//AJAX send value
 		function record_value(){
+			//Increment time
+			responseTime += 200;
 			var xmlhttp = new XMLHttpRequest();
 			//Not sure if this call is needed
 			xmlhttp.onreadystatechange = function() {
@@ -128,8 +131,22 @@
                 	//document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
 					}
 				}
-            xmlhttp.open("GET", "saveValue.php?value=" + value, true);
+			var valStr = value.toString();
+			var timeStr = responseTime.toString();
+			var ajaxStr = "saveValue.php?value=".concat(valStr,"&responseTime=",timeStr);
+			//console.log(ajaxStr);
+            xmlhttp.open("GET", ajaxStr, true);
 			xmlhttp.send();
+			}
+			
+		function on_slide(event, ui) {
+			value = ui.value;
+	        console.log(value); 
+			if(firstSlide == false)
+			{ 
+				setTimeout('clip1Play()', 300);
+				firstSlide = true;
+				}
 			}
 		
 		$( document ).ready(on_load());
@@ -147,7 +164,7 @@
 				}
 			
 			//Initialize slider
-			$( '#slider' ).slider({value: sliderVal, change: on_change})
+			$( '#slider' ).slider({value: sliderVal, slide: on_slide})
 			}
 	
 
