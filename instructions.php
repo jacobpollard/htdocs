@@ -7,15 +7,6 @@
 	<?php
 		
 		$_SESSION["ID"] = $_POST['ID'];
-		
-		$file = fopen('data/responses/responses'.$_SESSION["subject"].'.txt', 'a');
-		
-		fwrite($file, 'SUBJECT: ' . $_SESSION["subject"]);
-		fwrite($file,  ' FIELD: ' .           'ID' );
-		fwrite($file,  ' VALUE: ' . $_SESSION["ID"]);
-		fwrite($file, "\n");
-		
-		fclose($file);
 	
 	?>
 
@@ -71,8 +62,7 @@ very much information, make your <strong>BEST GUESS</strong>.
         </p>
         <p>
         To make your judgment you will use a sliding scale that you can move with your mouse. To
-make your judgment, <strong>click and drag</strong> the cursor to the appropriate place on the scale. When you
-are finished, click the <strong>Submit Judgment</strong> button to go on to the next event.
+make your judgment, <strong>click and drag</strong> the cursor to the appropriate place on the scale. 
         </p>
         <p>
         <center>You can practice using the cursor below:</center>

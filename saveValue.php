@@ -4,11 +4,11 @@
 	
 	//Grab value
 	$value = "".$_REQUEST["value"]."\n";
-	$time = "".$_REQUEST["responseTime"]."\n";
+	$time = "".$_REQUEST["responseTime"]."\n\n";
 	
-	$file = fopen('data/responses/Values-'.$_SESSION["ID"].'.txt', 'a');
+	$file = fopen('data/responses/'.$_SESSION["ID"].'-'.$_SESSION["audioNum"].'.txt', 'a');
 	
-	fwrite($file,' VALUE: '.$value.'  Time: '.$time);
+	fwrite($file,' Value: '.$value.' Time: '.$time);
 		
 	fclose($file);
 ?>

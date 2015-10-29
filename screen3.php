@@ -1,3 +1,8 @@
+<?php
+	// Start the session
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,34 +10,13 @@
 
     <?php
         
-        //$file = fopen('responses.txt', 'a');
-        /*$file = fopen('data/responses/responses-'.$_POST['subject'].'.txt', 'a');
-
-        
-        fwrite($file, 'SUBJECT: ' . $_POST['subject']);
-        fwrite($file,  ' FIELD: ' . 'et_' . $_POST['trial'] . '_updt');
-        fwrite($file,  ' VALUE: ' . $_POST['response']);
-        fwrite($file, "\n");
-        
-        fwrite($file, 'SUBJECT: ' . $_POST['subject']);
-        fwrite($file,  ' FIELD: ' . 'et_' . $_POST['trial'] . '_updt_rt1');
-        fwrite($file,  ' VALUE: ' . $_POST['rt1']);
-        fwrite($file, "\n");
-        
-        fwrite($file, 'SUBJECT: ' . $_POST['subject']);
-        fwrite($file,  ' FIELD: ' . 'et_' . $_POST['trial'] . '_updt_rt2');
-        fwrite($file,  ' VALUE: ' . $_POST['rt2']);
-        fwrite($file, "\n");
-        
-        fclose($file);
-        
-        switch ($_POST['trial']) {
+        switch ($_SESSION['audioNum']) {
         
             case 11: $destination = 'break2.php'; break;
             case 23: $destination = 'break3.php'; break;
             case 35: $destination = 'break4.php'; break;
-            default: $destination = 'et1.php';
-        }*/
+            default: $destination = 'screen2.php';
+        }
     
     ?>
 
@@ -62,17 +46,14 @@
 	<body>
 	    <?php
 	        $names_file = fopen('data/names.txt', 'r');
-	        $name_index = $_POST['trial'];
+	        $name_index = $_SESSION["audioNum"];
         	for ($i = 0; $i <= $name_index; $i ++) $name = trim(fgets($names_file));
 		    echo 'Describe in your own words what ' . $name . ' did.';
 		    fclose($names_file);
 	    ?>
         <br>
         <br>
-        <form action="index.php" method='post'>
-            <input type='hidden' name='subject' value="<?php echo $_POST['subject']; ?>">
-            <input type='hidden' name='condition' value="<?php echo $_POST['condition']; ?>">
-            <input type='hidden' name='trial' value="<?php echo $_POST['trial'] + 1; ?>">
+        <form action="<?php echo $destination; ?>" method='post'>
             <textarea name='response'></textarea>
             <br>
             <br>
