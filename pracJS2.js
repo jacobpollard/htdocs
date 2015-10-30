@@ -15,36 +15,12 @@ function clip2Play() {
 clip1.addEventListener('ended', function() {
 	setTimeout('clip2Play()', 400);
 })
-
-//AJAX send value
-function record_value(){
-	//Increment time
-	responseTime += 100;
-	
-	if(window.XMLHttpRequest) {
-		var xmlhttp = new XMLHttpRequest();
-	}
-	else
-	{
-		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	
-	var valStr = value.toString();
-	var timeStr = responseTime.toString();
-	var ajaxStr = "saveValue.php?value=".concat(valStr,"&responseTime=",timeStr);
-	//console.log(ajaxStr);
-    xmlhttp.open("GET", ajaxStr, true);
-	xmlhttp.send();
-	}
 	
 function on_slide(event, ui) {
 	value = ui.value;
     console.log(value); 
 	if(firstSlide == false)
 	{ 
-		//Record the slider value every 200ms
-		setInterval( 'record_value()', 100 );
-		
 		setTimeout('clip1Play()', 300);
 		firstSlide = true;
 		}

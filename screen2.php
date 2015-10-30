@@ -62,7 +62,7 @@
 		$condition = " Condition: ".$_SESSION["condition"]."\n";
 		$subject = " Subject: ".$_SESSION["subject"]."\n";
 		
-		$file = fopen('data/responses/'.$_SESSION["ID"].'-'.$_SESSION["audioNum"].'.txt', 'a');
+		$file = fopen('data/responses/'.$_SESSION["ID"].'-'.$_SESSION["audioNum"].'.txt', 'w');
 	
 		fwrite($file,$subject.$condition.$audioNum);
 		

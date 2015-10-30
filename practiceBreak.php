@@ -1,6 +1,15 @@
+<?php
+	// Start the session
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
+    
+    <?php
+    	$_SESSION["trial"] = 0;	
+    ?>
 
 	<style type='text/css'>
 	    body {
@@ -41,7 +50,7 @@
         </p>
         <br>
         <br>
-        <form action='et1.php' method='post'>
+        <form action='screen2.php' method='post'>
             <input type='submit' value='Continue'>
         </form>
     </body>

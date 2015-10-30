@@ -60,7 +60,7 @@
 
         <br>
 
-        <form action='instructions.php' method='post'>
+        <form action='pracScreen2.php' method='post'>
 
             <input type='submit' value="CONTINUE">
 

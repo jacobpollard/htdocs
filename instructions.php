@@ -12,6 +12,7 @@
 
 <head>
     <link type="text/css" href="jquery-ui-1.8.16.custom.css" rel="Stylesheet">	
+    
 	<style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
