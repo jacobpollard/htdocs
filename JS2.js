@@ -1,4 +1,4 @@
-var sliderVal = 50;
+var sliderVal = 0;
 var responseTime = 0;
 var value = 0;
 var firstSlide = false;
@@ -55,5 +55,5 @@ $( document ).ready(on_load());
 function on_load() {
 	
 	//Initialize slider
-	$( '#slider' ).slider({value: sliderVal, slide: on_slide})
+	$( '#slider' ).slider({value: sliderVal, slide: on_slide});
 	}

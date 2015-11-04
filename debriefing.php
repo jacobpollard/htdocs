@@ -1,3 +1,8 @@
+<?php
+	// Start the session
+	session_start();
+?>
+
 <html>
 	<?php
 	
@@ -43,19 +48,14 @@
 		fwrite($file, "\n");
 		
 		fclose($file);
-	
-	?>
-	
-		<?php
-
-		$payment_number = rand(100000, 999999);
 		
-		$payment_number_file = fopen('payment_numbers.txt', 'a');
-		fwrite($payment_number_file, ' payment_number: ' . $payment_number . "\n");
-		fclose($payment_number_file);
+		// remove all session variables
+		session_unset(); 
+
+		// destroy the session
+		session_destroy();
 	
 	?>
-
 	
 	<style type='text/css'>
 		body {
@@ -111,19 +111,5 @@
 		please contact <a href='mailto:soc.cog.sci.resrch@gmail.com'>Andrew Monroe</a> at soc.cog.sci.resrch@gmail.com.
 		</p>
 	</body>
-	
-		
-	<script type='text/javascript'>
-	
-		function on_load() {
-		
-			payment_number = <?php echo $payment_number; ?>;
-			
-			var page = document.getElementById( 'body' ).innerHTML
-			page = page.replace( /-NUMBER-/, payment_number )
-			document.getElementById( 'body' ).innerHTML = page
-		}
-		
-	</script>
 	
 </html>

@@ -14,8 +14,12 @@
   
 	<?php
     	
-    	//If there is a response, grab last response and save to session
     	if(isset($_POST["response"])){
+	    	$_SESSION["response"] = $_POST["response"];
+    	}
+    	
+    	//If there is a response, grab last response and save to file 
+    	if(isset($_SESSION["response"])){
     		$response = " Response: ".$_POST["response"];
     		
     		$file = fopen('data/responses/'.$_SESSION["ID"].'-'.$_SESSION["audioNum"].'.txt', 'a');

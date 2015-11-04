@@ -54,7 +54,7 @@
         <br>
         <br>
         <form action="<?php echo $destination; ?>" method='post'>
-            <textarea name='response'></textarea>
+            <textarea name='pracResponse'></textarea>
             <br>
             <br>
             <input class='submit' type='submit' value='Continue'>

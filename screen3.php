@@ -12,9 +12,9 @@
         
         switch ($_SESSION['audioNum']) {
         
-            case 11: $destination = 'break2.php'; break;
-            case 23: $destination = 'break3.php'; break;
-            case 35: $destination = 'break4.php'; break;
+            case 11: $destination = 'break.php'; break;
+            case 23: $destination = 'break.php'; break;
+            case 35: $destination = 'finalBreak.php'; break;
             default: $destination = 'screen2.php';
         }
     

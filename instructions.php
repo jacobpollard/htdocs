@@ -6,6 +6,7 @@
 <html>
 	<?php
 		
+		echo $_POST['ID'];
 		$_SESSION["ID"] = $_POST['ID'];
 	
 	?>
@@ -76,13 +77,13 @@ make your judgment, <strong>click and drag</strong> the cursor to the appropriat
 used to listening to the events, using the sliding cursor, and modifying your judgments.</center>
         </p>
         <br>
-        <form action='screen2.php' method='post'>
+        <form action='pracScreen2.php' method='post'>
             <input type='submit' value='Begin Practice Trials'>
         </form>
     
     <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>
-	<script> function on_load() { $( '#slider' ).slider( { value: 50 } ) } </script>
+	<script> function on_load() { $( '#slider' ).slider( { value: 0 } ) } </script>
     </body>
 	
 	
