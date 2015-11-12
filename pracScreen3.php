@@ -6,7 +6,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+    
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <?php
         
@@ -23,8 +29,6 @@
 	<style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
-		    margin: 5%;
-		    text-align: center;
 		    font-size: 20;
 		    font-family: sans-serif;
 	    }

@@ -19,36 +19,55 @@
 				background-color: rgb(180, 200, 255);
 			}
 			
-			#container {
-				margin-left: 0px;
-				margin-right: 0px;
+			#Sex {
+				margin-right: 15px; 
 			}
 			
-			#Sex {
-				margin-right: 15px;
+			.center {
+				text-align: center;
+			}
+			
+			#religion-form > .form-group {
+				padding-left: 10px;
+				padding-right: 10px;
 			}
 		</style>
 	</head>
 	
 	<body>
+		<div class="container-fluid text-center">
+			<p><strong>Congratulations, you have completed all the experimental trials!</strong></p><br>
+			<p>
+                Before you are finished we need to collect several pieces of general information that
+                would be asked in a typical Census survey. If a question is uncomfortable for you
+                to answer, feel free to skip it.
+            </p>
+            <hr>	
+		</div>
 		<div class="container-fluid">
-			<div class="col-lg-6">
+		
+			<div class="col-xs-6">
+			
 				<form class="form-horizontal" role="form">
+				
 					<div class="form-group">
-						<label class="control-label col-md-1 col-md-offset-4" for="Age">Age:</label>
-						<div class="col-md-4 col-md-offset-1">
+						<label class="control-label col-xs-1 col-xs-offset-6" for="Age">Age:</label>
+						<div class="col-xs-4">
 							<input type="text" class="form-control" id="Age" placeholder="Enter age">
 						</div>
 					</div>
+					
 					<div class="form-group">
-						<label class="control-label col-md-1 col-md-offset-4" for="Male" id="Sex">Sex:</label>
-						<label class="radio-inline col-md-1 col-md-offset-1"><input type="radio" name="optradio" id="Male">Male</label>
-						<label class="radio-inline col-md-1"><input type="radio" name="optradio">Female</label>
+						<label class="control-label col-xs-1 col-xs-offset-6" for="Male" id="Sex">Sex:</label>
+						<label class="radio-inline col-xs-1"><input type="radio" name="optradio" id="Male">Male</label>
+						<label class="radio-inline col-xs-1"><input type="radio" name="optradio">Female</label>
 					</div>
+					
 					<div class="form-group">
-						<label class="control-label col-md-1 col-md-offset-4" for="Ethn">Ethnicity:</label>
-						<div class="col-md-4 col-md-offset-1">
+						<label class="control-label col-xs-2 col-xs-offset-5" for="Ethn">Ethnicity:</label>
+						<div class="col-xs-4">
 							<select class="form-control" id="Ethn">
+								<option>-- Select One --</option>
 								<option value="AmerIndian">American Indian/Alaskan Native</option>
 								<option value="Asian">Asian/Pacific Islander</option>
 								<option value="Black">Black non-Hispanic</option>
@@ -60,10 +79,16 @@
 							</select>
 						</div>
 					</div>
+				</form>
+			</div>
+			
+			<div class="col-xs-6">
+				<form class="form-horizontal" role="form">
 					<div class="form-group">
-						<label class="control-label col-md-1 col-md-offset-4" for="Ethn">Education:</label>
-						<div class="col-md-4 col-md-offset-1">
+						<label class="control-label col-xs-2" for="Ethn">Education:</label>
+						<div class="col-xs-4">
 							<select class="form-control" id="Educ">
+								<option>-- Select One --</option>
 								<option value="elem">Elementary School</option>
 								<option value="mid">Middle School</option>
 								<option value="high">High School</option>
@@ -76,19 +101,15 @@
 							</select>
 						</div>
 					</div>
-				</form>
-			</div>
-			<div class="col-md-6">
-				<form class="form-horizontal" role="form">
 					<div class="form-group">
-						<label class="control-label col-md-1 col-md-offset-4" for="Ethn">Country:</label>
-						<div class="col-md-4 col-md-offset-1">
+						<label class="control-label col-xs-2" for="Ethn">Country:</label>
+						<div class="col-xs-4">
 							<select class="form-control" id="country">
 								<option>-- Select One --</option>
 								<option value="US">United States</option>
 								<option value="AF">Afghanistan</option>
 								<option value="AL">Albania</option>
-								<option value="DZ">Algeria</option>
+								<option value="DZ">Axseria</option>
 								<option value="AS">American Samoa</option>
 								<option value="AD">Andorra</option>
 								<option value="AO">Angola</option>
@@ -106,7 +127,7 @@
 								<option value="BD">Bangladesh</option>
 								<option value="BB">Barbados</option>
 								<option value="BY">Belarus</option>
-								<option value="BE">Belgium</option>
+								<option value="BE">Bexsium</option>
 								<option value="BZ">Belize</option>
 								<option value="BJ">Benin</option>
 								<option value="BM">Bermuda</option>
@@ -118,7 +139,7 @@
 								<option value="BR">Brazil</option>
 								<option value="IO">British Indian Ocean Territory</option>
 								<option value="BN">Brunei Darussalam</option>
-								<option value="BG">Bulgaria</option>
+								<option value="BG">Buxsaria</option>
 								<option value="BF">Burkina Faso</option>
 								<option value="BI">Burundi</option>
 								<option value="KH">Cambodia</option>
@@ -225,7 +246,7 @@
 								<option value="YT">Mayotte</option>
 								<option value="MX">Mexico</option>
 								<option value="FM">Micronesia</option>
-								<option value="MD">Moldova</option>
+								<option value="xs">Moldova</option>
 								<option value="MC">Monaco</option>
 								<option value="MN">Mongolia</option>
 								<option value="ME">Montenegro</option>
@@ -329,70 +350,67 @@
 							</select>
 						</div>	
 					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="Ethn">
+							Political Views:
+						</label>
+						<div class="col-xs-4">
+							<select class="form-control" id="country">
+								<option>-- Select One --</option>
+								<option value="E_Lib">Extremely Liberal</option>
+								<option value="St_Lib">Strongly Liberal</option>
+								<option value="Lib">Liberal</option>
+								<option value="Sl_Lib">Slightly Liberal</option>
+								<option value="Mod">Moderate</option>
+								<option value="Sl_Con">Slightly Conservative</option>
+								<option value="Con">Conservative</option>
+								<option value="St_Con">Strongly Conservative</option>
+								<option value="Ex_Con">Extremely Conservative</option>
+								<option value="other">Other</option>
+							</select>
+						</div>	
+					</div>
 				</form>
 			</div>
 		</div>
-		<form action='debriefing.php' method='post' />
-			<p><strong>Congratulations, you have completed all the experimental trials!</strong></p><br>
-            <p>
-                Before you are finished we need to collect several pieces of general information that
-                would be asked in a typical Census survey. If a question is uncomfortable for you
-                to answer, feel free to skip it.
-            </p>
-			<hr>
-			<table>
-				<tr>
-					<td>
-						How would you
-						<br>
-						describe your
-						<br>
-						political beliefs?
-					</td>
-					<td>
-						<select name="political" id="political">
-							<option>-- Select One --</option>
-							<option value="E_Lib">Extremely Liberal</option>
-							<option value="St_Lib">Strongly Liberal</option>
-							<option value="Lib">Liberal</option>
-							<option value="Sl_Lib">Slightly Liberal</option>
-							<option value="Mod">Moderate</option>
-							<option value="Sl_Con">Slightly Conservative</option>
-							<option value="Con">Conservative</option>
-							<option value="St_Con">Strongly Conservative</option>
-							<option value="Ex_Con">Extremely Conservative</option>
-							<option value="other">Other</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						&nbsp
-					</td>
-					<td>
-						If Other, please specify:&nbsp&nbsp&nbsp<input type="text" name="other_pol">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						How religious
-						<br>
-						are you?
-					</td>
-					<td>
-						Not at all&nbsp&nbsp<input type="radio" class="radio" name="religious" value=0>&nbsp&nbsp&nbsp&nbsp&nbsp
-						<input type="radio" class="radio" name="religious" value=1>&nbsp&nbsp&nbsp&nbsp&nbsp
-						<input type="radio" class="radio" name="religious" value=2>&nbsp&nbsp&nbsp&nbsp&nbsp
-						<input type="radio" class="radio" name="religious" value=3>&nbsp&nbsp&nbsp&nbsp&nbsp
-						<input type="radio" class="radio" name="religious" value=4>&nbsp&nbsp Extremely
-					</td>
-				</tr>
-			</table>
+		<br>
+		<div class="container-fluid center">
+			<div class="row">
+				<p><strong>How religious are you?</strong></p>
+			</div>
 			<br>
+			<div class="row">
+				<span class='col-xs-5' style='text-align:right;'>Not at All</span>
+				<form id="religion-form" class="form-inline col-xs-2" role="form">
+					<!--<div class="form-group">
+							<label class="control-label" for="Zero" id="Not">Not at all</label>
+					</div>-->
+					<div class="form-group">
+							<input type="radio" name="optradio" id="Zero">
+					</div>
+					<div class="form-group">
+							<input type="radio" name="optradio" id="One">
+					</div>
+					<div class="form-group">
+							<input type="radio" name="optradio" id="Two">
+					</div>
+					<div class="form-group">
+							<input type="radio" name="optradio" id="Three">
+					</div>
+					<div class="form-group">
+							<input type="radio" name="optradio" id="Four">
+					</div>
+					<!--<div class="form-group">
+							<label class="control-label" id="Not">Very</label>
+					</div>-->
+				</form>
+				<span class='col-xs-5' style='text-align:left;'>Very</span>
+			</div>
 			<br>
-			<input type='submit' value='Continue' class='button' />
-		</form>-->
-		</div>
+			<div class="row">
+				<button type="submit" class="btn btn-default">Submit</button>
+			</div>
+		</div>	
 	</body>
 
 </html>
