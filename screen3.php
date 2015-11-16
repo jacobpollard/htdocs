@@ -6,7 +6,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+    
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <?php
         
@@ -17,6 +23,11 @@
             case 35: $destination = 'finalBreak.php'; break;
             default: $destination = 'screen2.php';
         }
+        
+        //Grab current name
+		$names_file = fopen('data/names.txt', 'r');
+        for ($i = 0; $i <= $_SESSION["audioNum"]; $i ++) $name = trim(fgets($names_file));
+		fclose($names_file);
     
     ?>
 
@@ -24,41 +35,48 @@
 	<style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
-		    margin: 5%;
-		    text-align: center;
-		    font-size: 20;
+		    font-size: 20px;
 		    font-family: sans-serif;
+		    text-align: center;
 	    }
-	    textarea {
-	        width: 500px;
-	        height: 300px;
+		.top {
+		    margin-top: 10%;
 	    }
-	    input {
-		    font-size: 30;
-		}
 	</style>
 	
 	
-		<title> Florida State University Study </title>
+		<title> Appalachian State University Study </title>
 	</head>
 	
 	
 	<body>
-	    <?php
-	        $names_file = fopen('data/names.txt', 'r');
-	        $name_index = $_SESSION["audioNum"];
-        	for ($i = 0; $i <= $name_index; $i ++) $name = trim(fgets($names_file));
-		    echo 'Describe in your own words what ' . $name . ' did.';
-		    fclose($names_file);
-	    ?>
-        <br>
-        <br>
-        <form action="<?php echo $destination; ?>" method='post'>
-            <textarea name='response'></textarea>
-            <br>
-            <br>
-            <input class='submit' type='submit' value='Continue'>
-        </form>
+		<div class="container top">
+			<div class="row">
+				<p id="question"></p>
+			</div>
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2">
+				<form role="form" action="<?php echo $destination; ?>" method='post'>
+					<div class="form-group">
+						<textarea class="form-control" name="response" rows="10"></textarea>
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+		
+			var name = "Describe in your own words what ".concat("<?php echo $name; ?>"," did.");
+		
+			$( document ).ready(on_load());
+			
+			function on_load() { 
+				document.getElementById("question").innerHTML = name; 
+			}
+				
+		</script>
 	</body>
 	
 	

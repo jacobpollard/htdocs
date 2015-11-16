@@ -41,7 +41,7 @@
     <style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
-		    font-size: 20;
+		    font-size: 20px;
 		    font-family: sans-serif;
 	    }
 	    .top {

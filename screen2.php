@@ -7,9 +7,15 @@
   
   <head>
   
-  <link type="text/css" href="jquery-ui.min.css" rel="Stylesheet">	
-  <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="jquery-ui.min.js"></script>
+  	<link type="text/css" href="jquery-ui.min.css" rel="Stylesheet">	
+  	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+  	<script type="text/javascript" src="jquery-ui.min.js"></script>
+  	
+  	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   
   
 	<?php
@@ -21,26 +27,22 @@
     	//If there is a response, grab last response and save to file 
     	if(isset($_SESSION["response"])){
     		$response = " Response: ".$_POST["response"];
-    		
     		$file = fopen('data/responses/'.$_SESSION["ID"].'-'.$_SESSION["audioNum"].'.txt', 'a');
-    		
     		fwrite($file,$response);
-		
 			fclose($file);
     		}
     	
-    	//File containing auido names and the order in which they are played
+    	//File containing auido file names and the order in which they are played
     	$file = fopen('data/order' . $_SESSION["condition"] . '.txt', r)
     			or die("Unable to open order(n).txt file");
     	
     	$count = 0;
     	
-    	//Add names to $audioArray
+    	//Add audio file names to $audioArray
     	while(!feof($file) && $count < 72) {
 			$audioArray[$count] = trim(fgets($file));
 			$count++;
 		}
-		
 		fclose($file);
 		
 		//print_r($audioArray);
@@ -59,50 +61,46 @@
 		echo $clip_path1 . "<br>";
 		echo $clip_path2 . "<br>";
 		
+		//Calculate audioNum
 		$audioNum = round($_SESSION["trial"]/2,0,PHP_ROUND_HALF_DOWN);
-		$_SESSION["audioNum"] = $audioNum;
-		$audioNum = " AudioNum: ".$audioNum."\n\n";
 		
+		//Save audioNum to SESSION
+		$_SESSION["audioNum"] = $audioNum;
+		
+		$audioNum = " AudioNum: ".$audioNum."\n\n";	
 		$condition = " Condition: ".$_SESSION["condition"]."\n";
 		$subject = " Subject: ".$_SESSION["subject"]."\n";
 		
+		//Create file and header for data. 
 		$file = fopen('data/responses/'.$_SESSION["ID"].'-'.$_SESSION["audioNum"].'.txt', 'w');
-	
-		fwrite($file,$subject.$condition.$audioNum);
-		
+		fwrite($file,$subject.$condition.$audioNum);		
 		fclose($file);
 		
-		echo $_SESSION["condition"]. "<br>";
-		echo $_SESSION["trial"]. "<br>";
-		echo $_SESSION["audioNum"]. "<br>";
+		echo "Condition: ".$_SESSION["condition"]."<br>";
+		echo "Trial: ".$_SESSION["trial"]."<br>";
+		echo "AudioNum: ".$_SESSION["audioNum"]."<br>";
 		
 		$_SESSION["trial"] +=1;
+		
+		//Grab current name
+		$names_file = fopen('data/names.txt', 'r');
+        for ($i = 0; $i <= $_SESSION["audioNum"]; $i ++) $name = trim(fgets($names_file));
+		fclose($names_file);
     	
     ?>
     
-   <style type='text/css'>
+    <style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
-		    margin: 5%;
-		    text-align: center;
-		    font-size: 20;
+		    font-size: 20px;
 		    font-family: sans-serif;
 	    }
-	    div.slider {
-		    margin-left: 15%;
-		    margin-right: 15%;
+	    .top {
+		    margin-top: 10%;
 	    }
-	    input {
-		    font-size: 30;
-		}
-		p.left {
-		    position: absolute;
-		    left: 15%;
-		}
-		p.right {
-		    position: absolute;
-		    right: 15%;
-		}    
+	    .top-buffer {
+	    	margin-top:20px; 
+	    }
 	</style>
 		
  		<title> Florida State University Study </title>
@@ -111,16 +109,29 @@
 	
 <body>
     
-	<form id='form' action='screen3.php' method='post'>
-    	<div class='slider' id='slider'></div>
-    	<p class='left'>No blame<br>at all</p>
-        <p class='right'>The most blame<br>you would<br>ever give</p>
-		<input type='submit' value='Submit Judgment'>
-		<br>
-        <br>
-        <br>
-        <br>
-	</form>	
+	<div class="container-fluid text-center top">
+		<div class="row">
+			<div class="">
+				<p id="name">Default</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<div id="slider"></div>
+			</div>
+		</div>
+		<div class="row top-buffer">
+			<div class="col-xs-2 col-xs-offset-1">
+				<p>No blame</p>
+			</div>
+			<div class="col-xs-2 col-xs-offset-2">
+				<button type="button" onclick="on_click()" class="btn btn-default">Continue</button>
+			</div>
+			<div class="col-xs-2 col-xs-offset-2">
+				<p>The most blame you would ever give</p>
+			</div>
+		</div>
+	</div> 	
 	
 	<script type="text/javascript">
 		var clip1 = new Audio();
@@ -128,6 +139,8 @@
 		
 		clip1.src = "<?php echo $clip_path1; ?>";
 		clip2.src = "<?php echo $clip_path2; ?>";
+		
+		var name = "<?php echo $name; ?>";
 	</script>
 	
 	<script type="text/javascript" src="JS2.js"></script>	

@@ -25,11 +25,6 @@ clip2.addEventListener('ended', function() {
 function on_slide(event, ui) {
 	value = ui.value;
     console.log(value); 
-	if(firstSlide == false)
-	{ 
-		setTimeout('clip1Play()', 300);
-		firstSlide = true;
-		}
 	}
 
 $( document ).ready(on_load());
@@ -44,15 +39,24 @@ function on_load() {
 			document.getElementById("name").innerHTML = "Daniel";
 			break;
 		case "1":
-			document.getElementById("name").innerHTML = "Fran";
+			document.getElementById("name").innerHTML = "Josh";
 			break;
 		case "2":
-			document.getElementById("name").innerHTML = "Man";
+			document.getElementById("name").innerHTML = "Emily";
 			break;
 		default:
-			document.getElementById("name").innerHTML = "Isn't working";
+			document.getElementById("name").innerHTML = "Error";
 			break;	
 	}
+	
+	$('#slider>span').on('mousedown', function() {
+		if(firstSlide == false)
+		{ 
+			setTimeout('clip1Play()', 300);
+			firstSlide = true;
+		}
+		console.log("clicked");
+	 });
 }
 
 function on_click() {

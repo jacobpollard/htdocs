@@ -31,7 +31,7 @@
 	<style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
-		    font-size: 20;
+		    font-size: 20px;
 		    font-family: sans-serif;
 	    }
 	    
@@ -100,7 +100,7 @@
         		</p>
 			</row>
 			<row class="col-xs-4 col-xs-offset-5">
-				<form action="pracScreen2.php" method="post" role="form">
+				<form action="screen2.php" method="post" role="form">
 					<button type="submit" class="btn btn-default">Begin Practice Trials</button>
 				</form>
 			</row>

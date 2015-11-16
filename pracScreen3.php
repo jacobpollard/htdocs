@@ -29,40 +29,59 @@
 	<style type='text/css'>
 	    body {
 		    background-color: rgb(180, 200, 255);
-		    font-size: 20;
+		    font-size: 20px;
 		    font-family: sans-serif;
+		    text-align: center;
 	    }
-	    textarea {
-	        width: 500px;
-	        height: 300px;
+		.top {
+		    margin-top: 10%;
 	    }
-	    input {
-		    font-size: 30;
-		}
 	</style>
 	
 	
-		<title> Florida State University Study </title>
+		<title> Appalachian State University Study </title>
 	</head>
 	
 	
 	<body>
-	    <?php
-	        switch ($_SESSION['trial']) {
-	            case 0: echo "Describe in your own words what Daniel did."; break;
-	            case 1: echo "Describe in your own words what Josh did.";   break;
-	            case 2: echo "Describe in your own words what Emily did.";  break;
-	        }
-	        $_SESSION["trial"]++;
-	    ?>
-        <br>
-        <br>
-        <form action="<?php echo $destination; ?>" method='post'>
-            <textarea name='pracResponse'></textarea>
-            <br>
-            <br>
-            <input class='submit' type='submit' value='Continue'>
-        </form>
+		<div class="container top">
+			<div class="row">
+				<p id="question"></p>
+			</div>
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2">
+				<form role="form" action="<?php echo $destination; ?>" method='post'>
+					<div class="form-group">
+						<textarea class="form-control" rows="10"></textarea>
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var trial = "<?php echo $_SESSION["trial"]; ?>";
+			
+			$( document ).ready(on_load());
+			
+			function on_load() {
+				switch(trial) {
+					case "0":
+						document.getElementById("question").innerHTML = "Describe in your own words what Daniel did.";
+						break;
+					case "1":
+						document.getElementById("question").innerHTML = "Describe in your own words what Josh did.";
+						break;
+					case "2":
+						document.getElementById("question").innerHTML = "Describe in your own words what Emily did.";
+						break;
+					default:
+						document.getElementById("question").innerHTML = "Error";
+						break;	
+				}
+			}
+		</script>
 	</body>
 	
 	
