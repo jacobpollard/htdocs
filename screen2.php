@@ -20,18 +20,6 @@
   
 	<?php
     	
-    	if(isset($_POST["response"])){
-	    	$_SESSION["response"] = $_POST["response"];
-    	}
-    	
-    	//If there is a response, grab last response and save to file 
-    	if(isset($_SESSION["response"])){
-    		$response = " Response: ".$_POST["response"];
-    		$file = fopen('data/responses/'.$_SESSION["ID"].'-'.$_SESSION["audioNum"].'.txt', 'a');
-    		fwrite($file,$response);
-			fclose($file);
-    		}
-    	
     	//File containing auido file names and the order in which they are played
     	$file = fopen('data/order' . $_SESSION["condition"] . '.txt', r)
     			or die("Unable to open order(n).txt file");
@@ -50,16 +38,16 @@
 		//Grab two audio files for current trial
 		$clip_path1 = "data/audio/" . $audioArray[$_SESSION["trial"]] . ".mp3";
 		
-		echo $audioArray[$_SESSION["trial"]]. "<br>";
+		//echo $audioArray[$_SESSION["trial"]]. "<br>";
 		
 		$_SESSION["trial"] +=1;
 		
-		echo $audioArray[$_SESSION["trial"]]. "<br>";
+		//echo $audioArray[$_SESSION["trial"]]. "<br>";
 		
 		$clip_path2 = "data/audio/" . $audioArray[$_SESSION["trial"]] . ".mp3";
 		
-		echo $clip_path1 . "<br>";
-		echo $clip_path2 . "<br>";
+		//echo $clip_path1 . "<br>";
+		//echo $clip_path2 . "<br>";
 		
 		//Calculate audioNum
 		$audioNum = round($_SESSION["trial"]/2,0,PHP_ROUND_HALF_DOWN);
@@ -76,9 +64,9 @@
 		fwrite($file,$subject.$condition.$audioNum);		
 		fclose($file);
 		
-		echo "Condition: ".$_SESSION["condition"]."<br>";
-		echo "Trial: ".$_SESSION["trial"]."<br>";
-		echo "AudioNum: ".$_SESSION["audioNum"]."<br>";
+		//echo "Condition: ".$_SESSION["condition"]."<br>";
+		//echo "Trial: ".$_SESSION["trial"]."<br>";
+		//echo "AudioNum: ".$_SESSION["audioNum"]."<br>";
 		
 		$_SESSION["trial"] +=1;
 		
@@ -103,7 +91,7 @@
 	    }
 	</style>
 		
- 		<title> Florida State University Study </title>
+ 		<title> Appalachian State University Study </title>
 </head>
 	
 	

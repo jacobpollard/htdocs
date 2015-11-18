@@ -21,7 +21,7 @@
             case 11: $destination = 'break.php'; break;
             case 23: $destination = 'break.php'; break;
             case 35: $destination = 'finalBreak.php'; break;
-            default: $destination = 'screen2.php';
+            default: $destination = 'screen1.php';
         }
         
         //Grab current name

@@ -17,8 +17,12 @@
 		<style type='text/css'>
 			body {
 				background-color: rgb(180, 200, 255);
+				margin-top: 5%;
 			}
 			
+			.big {
+				font-size: 20px;
+			}
 			#Sex {
 				margin-right: 15px; 
 			}
@@ -36,8 +40,8 @@
 	
 	<body>
 		<div class="container-fluid text-center">
-			<p><strong>Congratulations, you have completed all the experimental trials!</strong></p><br>
-			<p>
+			<p class="big"><strong>Congratulations, you have completed all the experimental trials!</strong></p><br>
+			<p class="big">
                 Before you are finished we need to collect several pieces of general information that
                 would be asked in a typical Census survey. If a question is uncomfortable for you
                 to answer, feel free to skip it.
@@ -48,25 +52,25 @@
 		
 			<div class="col-xs-6">
 			
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" id="topLeft" role="form">
 				
 					<div class="form-group">
 						<label class="control-label col-xs-1 col-xs-offset-6" for="Age">Age:</label>
 						<div class="col-xs-4">
-							<input type="text" class="form-control" id="Age" placeholder="Enter age">
+							<input type="text" class="form-control" id="age" placeholder="Enter age">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-xs-1 col-xs-offset-6" for="Male" id="Sex">Sex:</label>
-						<label class="radio-inline col-xs-1"><input type="radio" name="optradio" id="Male">Male</label>
-						<label class="radio-inline col-xs-1"><input type="radio" name="optradio">Female</label>
+						<label class="control-label col-xs-1 col-xs-offset-6" for="male">Sex:</label>
+						<label class="radio-inline col-xs-1"><input type="radio" name="optradio" id="male">Male</label>
+						<label class="radio-inline col-xs-1"><input type="radio" name="optradio" id="female">Female</label>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-xs-2 col-xs-offset-5" for="Ethn">Ethnicity:</label>
+						<label class="control-label col-xs-2 col-xs-offset-5" for="ethn">Ethnicity:</label>
 						<div class="col-xs-4">
-							<select class="form-control" id="Ethn">
+							<select class="form-control" id="ethn">
 								<option>-- Select One --</option>
 								<option value="AmerIndian">American Indian/Alaskan Native</option>
 								<option value="Asian">Asian/Pacific Islander</option>
@@ -83,11 +87,11 @@
 			</div>
 			
 			<div class="col-xs-6">
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" id="topRight" role="form">
 					<div class="form-group">
-						<label class="control-label col-xs-2" for="Ethn">Education:</label>
+						<label class="control-label col-xs-2" for="educ">Education:</label>
 						<div class="col-xs-4">
-							<select class="form-control" id="Educ">
+							<select class="form-control" id="educ">
 								<option>-- Select One --</option>
 								<option value="elem">Elementary School</option>
 								<option value="mid">Middle School</option>
@@ -102,7 +106,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-xs-2" for="Ethn">Country:</label>
+						<label class="control-label col-xs-2" for="country">Country:</label>
 						<div class="col-xs-4">
 							<select class="form-control" id="country">
 								<option>-- Select One --</option>
@@ -355,7 +359,7 @@
 							Political Views:
 						</label>
 						<div class="col-xs-4">
-							<select class="form-control" id="country">
+							<select class="form-control" id="poli">
 								<option>-- Select One --</option>
 								<option value="E_Lib">Extremely Liberal</option>
 								<option value="St_Lib">Strongly Liberal</option>
@@ -381,36 +385,86 @@
 			<br>
 			<div class="row">
 				<span class='col-xs-5' style='text-align:right;'>Not at All</span>
-				<form id="religion-form" class="form-inline col-xs-2" role="form">
-					<!--<div class="form-group">
-							<label class="control-label" for="Zero" id="Not">Not at all</label>
-					</div>-->
+				<form id="bottom" class="form-inline col-xs-2" role="form">
 					<div class="form-group">
-							<input type="radio" name="optradio" id="Zero">
+							<input type="radio" name="optradio" id="zero">
 					</div>
 					<div class="form-group">
-							<input type="radio" name="optradio" id="One">
+							<input type="radio" name="optradio" id="one">
 					</div>
 					<div class="form-group">
-							<input type="radio" name="optradio" id="Two">
+							<input type="radio" name="optradio" id="two">
 					</div>
 					<div class="form-group">
-							<input type="radio" name="optradio" id="Three">
+							<input type="radio" name="optradio" id="three">
 					</div>
 					<div class="form-group">
-							<input type="radio" name="optradio" id="Four">
+							<input type="radio" name="optradio" id="four">
 					</div>
-					<!--<div class="form-group">
-							<label class="control-label" id="Not">Very</label>
-					</div>-->
 				</form>
 				<span class='col-xs-5' style='text-align:left;'>Very</span>
 			</div>
 			<br>
 			<div class="row">
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="button" onclick="on_click()" class="btn btn-default btn-md">Submit</button>
 			</div>
 		</div>	
+		
+		<script type="text/javascript">
+			var responses = new Array();
+						
+			function on_click() {
+				
+				var i = 0;
+				
+				if(document.forms["topLeft"]["age"].value != "") {
+					responses.push("Age: ".concat(document.forms["topLeft"]["age"].value));
+				}
+				if(document.forms["topLeft"]["male"].checked) {
+					responses.push("Sex: Male");
+				}
+				else if(document.forms["topLeft"]["female"].checked) {
+					responses.push("Sex: Female");
+				}
+				if(document.forms["topLeft"]["ethn"].selectedIndex != 0) {
+					responses.push("Ethnicity: ".concat(document.forms["topLeft"]["ethn"].options[document.forms["topLeft"]["ethn"].selectedIndex].text));
+				}
+				if(document.forms["topRight"]["educ"].selectedIndex != 0) {
+					responses.push("Education: ".concat(document.forms["topRight"]["educ"].options[document.forms["topRight"]["educ"].selectedIndex].text));
+				}
+				if(document.getElementById("topRight").elements[1].selectedIndex != 0) {
+					responses.push("Country: ".concat(
+						document.getElementById("topRight").elements[1].options[document.getElementById("topRight").elements[1].selectedIndex].text
+					));
+				}
+				if(document.forms["topRight"]["poli"].selectedIndex != 0) {
+					responses.push("Political Views: ".concat(document.forms["topRight"]["poli"].options[document.forms["topRight"]["poli"].selectedIndex].text));
+				}
+				for(i;i<5;i++) {
+					if(document.getElementById("bottom").elements[i].checked) {
+						responses.push("Religious Level(0-4): ".concat(i));
+					}
+				}
+				if(responses.length > 0) {
+					ajax(responses);
+				}
+				else {
+					responses.push("No responses given");
+					ajax(responses);
+				}
+				window.location = "debriefing.php";
+			}
+			
+			function ajax(rArray) {
+				//console.log("here");
+				var t = 501;
+				$.ajax({
+					type: "POST",
+					data: {array:rArray},
+					url: "demo.php",
+				});
+			}
+		</script>
 	</body>
 
 </html>

@@ -25,7 +25,7 @@
 		    text-align: center;
 		    font-size: 20px;
 		    font-family: sans-serif;
-		    margin-top: 10%;
+		    margin: 5%;
 	    }
 
 	</style>
@@ -34,13 +34,9 @@
 
 	</head>
 
-	
-
-	
-
 	<body>
 		<div class="container">
-				<p>Please pay careful attention to the following scenarios.</p>
+				<p>Please pay careful attention to the following scenario.</p>
 				<button type="button" onclick="on_click()" class="btn btn-default btn-md">Continue</button>
 		</div>
 		

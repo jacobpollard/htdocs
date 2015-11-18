@@ -35,7 +35,7 @@
 	
 	<body>
 		<div class="container">
-			<p>You just completed the practice trials.</p>
+			<h3>You just completed the practice trials.</h3>
 			<p>
 			You are about to begin the main trials. These trials will have the exact same format as the practice trials: 
 			you will hear about an event, be asked to make a first judgment, then you will hear some new information, and finally
