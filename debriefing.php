@@ -13,31 +13,39 @@
 		session_destroy();
 	
 	?>
-	
-	<style type='text/css'>
-		body {
-			background-color: rgb(180, 200, 255);
-			margin-left: 10%;
-			margin-right: 10%;
-			margin-top: 5%;
-			margin-bottom: 5%;
-			text-align: center;
-			font-size: 20px;
-			font-family: sans-serif;
-		}
-		h3 {
-			text-align: center;
-		}
-		.30 {
-			font-size: 30px;
-		}
-		.25 {
-			font-size: 25px;
-		}
-	</style>
 
 
 	<head>
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<style type='text/css'>
+			body {
+				background-color: rgb(180, 200, 255);
+				margin-left: 10%;
+				margin-right: 10%;
+				margin-top: 5%;
+				margin-bottom: 5%;
+				text-align: center;
+				font-size: 20px;
+				font-family: sans-serif;
+			}
+			h3 {
+				text-align: center;
+			}
+			.30 {
+				font-size: 30px;
+			}
+			.25 {
+				font-size: 25px;
+			}
+		</style>
+		
 		<title> Appalachian State University Study </title>
 	</head>
 	
@@ -45,7 +53,7 @@
 	
 	<body>
 		<div class="container">
-		<h3>Congratulations, you have finished the experiment.</h3>
+		<h2>Congratulations, you have finished the experiment.</h2>
 		<p>
 		<br>
 	    In this study we are interested in understanding how people update their moral judgments. 

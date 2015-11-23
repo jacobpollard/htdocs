@@ -12,7 +12,8 @@
 	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<title> Florida State University Study </title>
+		
+		<title> Appalachian State University Study </title>
 		
 		<style type='text/css'>
 			body {
@@ -70,7 +71,7 @@
 					<div class="form-group">
 						<label class="control-label col-xs-2 col-xs-offset-5" for="ethn">Ethnicity:</label>
 						<div class="col-xs-4">
-							<select class="form-control" id="ethn">
+							<select class="form-control" id="ethn" onchange="showOther(this);">
 								<option>-- Select One --</option>
 								<option value="AmerIndian">American Indian/Alaskan Native</option>
 								<option value="Asian">Asian/Pacific Islander</option>
@@ -83,6 +84,16 @@
 							</select>
 						</div>
 					</div>
+					
+					<div class="form-group" id="other1">
+						<label class="control-label col-xs-2 col-xs-offset-5" for="otherTex1">
+							Please Specifiy:
+						</label>
+						<div class="col-xs-4">
+							<textarea class="form-control" rows="2" id="otherTex1"></textarea>
+						</div>	
+					</div>
+					
 				</form>
 			</div>
 			
@@ -355,11 +366,11 @@
 						</div>	
 					</div>
 					<div class="form-group">
-						<label class="control-label col-xs-2" for="Ethn">
+						<label class="control-label col-xs-2" for="poli">
 							Political Views:
 						</label>
 						<div class="col-xs-4">
-							<select class="form-control" id="poli">
+							<select class="form-control" id="poli" onchange="showOther(this);">
 								<option>-- Select One --</option>
 								<option value="E_Lib">Extremely Liberal</option>
 								<option value="St_Lib">Strongly Liberal</option>
@@ -372,6 +383,14 @@
 								<option value="Ex_Con">Extremely Conservative</option>
 								<option value="other">Other</option>
 							</select>
+						</div>	
+					</div>
+					<div class="form-group" id="other2">
+						<label class="control-label col-xs-2" for="otherTex2">
+							Please Specifiy:
+						</label>
+						<div class="col-xs-4">
+							<textarea class="form-control" rows="2" id="otherTex2"></textarea>
 						</div>	
 					</div>
 				</form>
@@ -412,7 +431,14 @@
 		
 		<script type="text/javascript">
 			var responses = new Array();
-						
+			
+			$( document ).ready(on_load());
+
+			function on_load() {
+				$("#other1").hide();
+				$("#other2").hide();
+			}	
+					
 			function on_click() {
 				
 				var i = 0;
@@ -427,7 +453,12 @@
 					responses.push("Sex: Female");
 				}
 				if(document.forms["topLeft"]["ethn"].selectedIndex != 0) {
-					responses.push("Ethnicity: ".concat(document.forms["topLeft"]["ethn"].options[document.forms["topLeft"]["ethn"].selectedIndex].text));
+					if(document.forms["topLeft"]["ethn"].selectedIndex != 8) {
+						responses.push("Ethnicity: ".concat(document.forms["topLeft"]["ethn"].options[document.forms["topLeft"]["ethn"].selectedIndex].text));
+					}
+					else {
+						responses.push("Ethnicity: ".concat($("#otherTex1").val()));
+					}
 				}
 				if(document.forms["topRight"]["educ"].selectedIndex != 0) {
 					responses.push("Education: ".concat(document.forms["topRight"]["educ"].options[document.forms["topRight"]["educ"].selectedIndex].text));
@@ -438,7 +469,12 @@
 					));
 				}
 				if(document.forms["topRight"]["poli"].selectedIndex != 0) {
-					responses.push("Political Views: ".concat(document.forms["topRight"]["poli"].options[document.forms["topRight"]["poli"].selectedIndex].text));
+					if(document.forms["topRight"]["poli"].selectedIndex != 10) {
+						responses.push("Political Views: ".concat(document.forms["topRight"]["poli"].options[document.forms["topRight"]["poli"].selectedIndex].text));
+					}
+					else {
+						responses.push("Political Views: ".concat($("#otherTex2").val()));
+					}
 				}
 				for(i;i<5;i++) {
 					if(document.getElementById("bottom").elements[i].checked) {
@@ -453,6 +489,25 @@
 					ajax(responses);
 				}
 				window.location = "debriefing.php";
+			}
+			
+			function showOther(sel) {
+				if($(sel).attr('id') == "ethn") {
+					if(sel.value == "other") {
+						$("#other1").show();
+					}
+					else {
+						$("#other1").hide();
+					}
+				}
+				if($(sel).attr('id') == "poli") {
+					if(sel.value == "other") {
+						$("#other2").show();
+					}
+					else {
+						$("#other2").hide();
+					}
+				}
 			}
 			
 			function ajax(rArray) {

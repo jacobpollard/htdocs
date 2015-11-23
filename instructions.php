@@ -97,7 +97,7 @@
         		</p>
 			</row>
 			<row class="col-xs-4 col-xs-offset-5">
-				<form action="screen2.php" method="post" role="form">
+				<form action="demographics.php" method="post" role="form">
 					<button type="submit" class="btn btn-default">Begin Practice Trials</button>
 				</form>
 			</row>
